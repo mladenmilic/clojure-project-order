@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PIZZERIA</title>
+ <style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 250px;
+  border-radius: 5px;
+  margin: 15px;
+  text-transform: uppercase;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+.container {
+  text-align: center;
+}
+.wrap-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  margin: auto;
+
+}
+a:link {
+  text-decoration: none;
+  color:black;
+}
+
+a:visited {
+  text-decoration: none;
+   color:black;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+  color:black;
+}
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+</style>
+</head>
+<body>
+<div class = "title">
+    <h2>Pizzeria</h2>
+</div>
+<div class = "wrap-card">
+    <div class="card">
+        <a href="/create-order">
+            <img src="image/add_order.png" style="width:100%">
+            <div class="container">
+                <h4><a href="/create-order">Create order</a></h4>
+            </div>
+        </a>
+    </div>
+    <div class="card">
+        <a href="/list-order">
+            <img src="image/list_orders.png" style="width:100%">
+            <div class="container">
+                <h4><a href="/list-order">List orders</a></h4>
+            </div>
+        </a>
+    </div>
+</div>
+</body>
+</html>

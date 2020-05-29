@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PIZZERIA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 30px;
+}
+.add-button-pizza {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width:150px !important;
+}
+label {
+margin-bottom: 0;
+}
+.action {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4px;
+}
+</style>
+    <script>
+    function addPizza() {
+      var count = 0;
+      var x = document.getElementById("pizza").value;
+      var res = x.split(" ");
+      var y = parseInt (document.getElementById("count").value);
+      count =  parseInt (res[1]) * y;
+      var c = parseInt(document.getElementById("total").value);
+
+      if( c > 0 ) {
+              document.getElementById("total").value = parseInt(document.getElementById("total").value) + count;
+      } else {
+         document.getElementById("total").value = count;
+      }
+      var n = x + " x"+y;
+      document.getElementById("description").innerHTML = document.getElementById("description").value + n + "  ";
+    }
+</script>
+</head>
+<body>
+
+<div class="title" >
+    Update order
+</div>
+
+<div class="container">
+    <form action="/update-order" method="post" autocomplete="off">
+        <input type="hidden" id="id" name="id" value="{{order.id}}">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="street">Street</label>
+                <input required type="text" id="street" name="street" value="{{order.street}}" placeholder="Street..">
+            </div>
+            <div class="col-md-6">
+                <label for="municipality">Municipality</label>
+                <input type="text" id="municipality" value="{{order.municipality}}" name="municipality" placeholder="Municipality..">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="mobile">Mobile</label>
+                <input required type="text" id="mobile" value="{{order.mobile}}" name="mobile" placeholder="Mobile..">
+            </div>
+            <div class="col-md-6">
+                <label for="date">Select date</label>
+                <input required class="datepicker" value="{{order.date}}" name="date" placeholder="Selected date" type="text"
+                       id="date">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="pizza">Pizza</label>
+                <select required id="pizza" name="pizza">
+                    <option name="Capricossa" value="Capricossa 400">Capricossa</option>
+                    <option name="Margarita" value="Margarita 350">Margarita</option>
+                    <option name="Serbia" value="Serbia 450">Serbia</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <label for="count">count</label>
+                <input  type="text" id="count" name="count" >
+            </div>
+            <div class="col-md-2" style="margin-top: 20px;">
+                <button onclick="addPizza()" type="button" class="add-button-pizza">Add-pizza</button>
+            </div>
+            <div class="col-md-2">
+                <label for="total">Total</label>
+                <input type="text" value="{{order.totla}}" id="total" name="total" >
+            </div>
+        </div>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="Description something.." style="height:160px">{{order.description}}</textarea>
+        <div class="action">
+            <a href="/list-order"><button type="button" class="add-button-pizza">Cancele</button></a>
+            <button type="submit" class="add-button-pizza">Update</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script>
+    $(document).ready(() => {
+        $('.datepicker').datepicker({
+            weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+            showMonthsShort: true
+        });
+    });
+</script>
+</body>
+</html>

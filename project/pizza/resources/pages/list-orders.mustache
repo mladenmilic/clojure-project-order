@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PIZZERIA</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
+    <style>
+      .title {
+         text-align: center;
+         text-transform: uppercase;
+         font-size: 40px; }
+       .action-button {
+          display: flex;
+          justify-content: center;
+          place-content: center space-evenly;
+          align-items: center;
+       }
+    </style>
+</head>
+<body>
+<div class = "title">
+    <h2>List orders</h2>
+</div>
+<div class="container" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Date</td>
+                    <td>Street</td>
+                    <td>Total</td>
+                    <td>Action</td>
+                </tr>
+                </thead>
+                <tbody>
+               {{#orders}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{date}}</td>
+                    <td>{{street}}</td>
+                    <td>{{totla}}</td>
+                    <td>
+                        <div class = "action-button">
+                            <a href="/update-order/{{id}}"><img src="image/edit.png"></a>
+                            <a href="/delete-order/{{id}}"><img src="image/delete.png"></a>
+                        </div>
+                    </td>
+                </tr>
+                {{/orders}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+<script
+        src="http://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript">
+        $(document).ready(function() {
+            $(".table").DataTable({
+                "ordering": true,
+                "searching": true,
+                "paging": true,
+                "columnDefs": [
+                    {
+                        "targets": 0,
+                        "searchable": false,
+                        "visible": true
+                    }
+                ],
+                "order": [[2, "desc"]]
+            });
+        });
+    </script>
+</body>
+</html>
