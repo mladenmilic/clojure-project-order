@@ -16,6 +16,25 @@
           place-content: center space-evenly;
           align-items: center;
        }
+      .action {
+        display: flex;
+        flex-direction: row;
+        bottom:0;
+        position:absolute;
+     }
+     .btn-button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 25px 200px;
+        cursor: pointer;
+        width: 170px !important;
+    }
     </style>
 </head>
 <body>
@@ -54,6 +73,11 @@
             </table>
         </div>
     </div>
+    <div class="action">
+        <a href="/create-order"><button type="button" class="btn-button">Create order</button></a>
+        <a href="/menu"><button type="button" class="btn-button">Back</button></a>
+    </div>
+</div>
 <script
         src="http://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
