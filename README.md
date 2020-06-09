@@ -24,7 +24,7 @@ Steps for running this application:
     2. password: pera
 
 ## About this Project
-You can see more on video:
+You can see more on video: https://www.youtube.com/watch?v=-aNcyentiac
 ## License
 
 Copyright © 2020 FIXME
